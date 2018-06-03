@@ -2,6 +2,19 @@ package com.chenhl.juc.threadpool;
 
 import java.util.concurrent.ExecutorService;
 
+/*
+1.传统的线程与线程池
+
+线程的创建与线程要执行的任务绑定到了一起，
+ThreadFactory:
+线程池其实就是将线程的创建和线程要执行的任务分开了。
+
+Executor:
+
+jdk1.5的Future
+
+future.get()方法是一个鸡肋的方法，不知道什么时机去调用。
+ */
 public class ThreadPoolTest1 {
 
     public static void main(String[] args) {
