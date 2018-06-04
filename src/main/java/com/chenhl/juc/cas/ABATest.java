@@ -11,23 +11,19 @@ public class ABATest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Thread thread = new Thread(new Runnable() {
-            public void run() {
-                atomicInteger.compareAndSet(100, 101);
-                atomicInteger.compareAndSet(101, 100);
-            }
+        Thread thread = new Thread(() -> {
+            atomicInteger.compareAndSet(100, 101);
+            atomicInteger.compareAndSet(101, 100);
         });
 
-        Thread thread1 = new Thread(new Runnable() {
-            public void run() {
-                try {
-                    TimeUnit.SECONDS.sleep(1);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                boolean bool = atomicInteger.compareAndSet(100, 101);
-                System.out.println(bool);//true
+        Thread thread1 = new Thread(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+            boolean bool = atomicInteger.compareAndSet(100, 101);
+            System.out.println(bool);//true
         });
 
         thread.start();

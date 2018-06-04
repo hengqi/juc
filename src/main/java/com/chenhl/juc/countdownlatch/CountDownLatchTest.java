@@ -6,6 +6,8 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by user on 2017/6/24.
+ *
+ * 控制 -- 在线程完成某些操作时，要等待其他线程任务都执行完了，当前线程的操作才继续执行。
  */
 public class CountDownLatchTest {
 
@@ -48,16 +50,22 @@ public class CountDownLatchTest {
 
         @Override
         public void run() {
-            System.out.println("current Thread: " + Thread.currentThread().getName());
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("person " + index +"签到");
 
-            //线程执行完毕，计数器减一
-            countDownLatch.countDown();
+            synchronized (this) {
+                try {
+                    System.out.println("current Thread: " + Thread.currentThread().getName());
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("person " + index +"签到");
+                } finally {
+                    //线程执行完毕，计数器减一
+                    countDownLatch.countDown();
+                }
+            }
+
         }
     }
 }

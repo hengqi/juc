@@ -2,6 +2,11 @@ package com.chenhl.juc.threadpool;
 
 import java.util.concurrent.ExecutorService;
 
+/*
+    线程池的思想：
+
+ */
+
 public class ThreadPoolTest1 {
 
     public static void main(String[] args) {
@@ -10,8 +15,8 @@ public class ThreadPoolTest1 {
 
         ExecutorService pool = executor.getCustomThreadPoolExecutor();
 
-        for (int i=1; i<100; i++) {
-            System.out.println("提交第"+i+"个任务");
+        for (int i = 1; i < 100; i++) {
+            System.out.println("提交第" + i + "个任务");
             pool.execute(new MyRunnable());
         }
 

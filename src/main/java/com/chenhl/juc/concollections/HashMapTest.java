@@ -1,4 +1,4 @@
-package com.chenhl.juc.concurrenthashmap;
+package com.chenhl.juc.concollections;
 
 import java.util.HashMap;
 

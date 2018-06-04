@@ -1,7 +1,10 @@
-package com.chenhl.juc.concurrenthashmap;
+package com.chenhl.juc.concollections;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * 锁分段机制
+ */
 public class ConcurrentHashMapTest {
 
     public static void main(String[] args) {
