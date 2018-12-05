@@ -3,6 +3,7 @@ package com.chenhl.juc.threadbase.controll;
 /**
  * 线程提供了一个让一个线程等待其他线程的方法，join方法：
  * 当在某个程序的执行流中，调用了其他线程的join方法，调用线程将被阻塞，直到被join线程加入的方法执行完为止
+ * 在主线程中调用了线程B的join方法，那么主线程必须等到线程B运行完了，才能运行，而主线程处于阻塞状态
  * @author lenovo
  *
  */
